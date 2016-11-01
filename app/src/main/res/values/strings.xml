@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MoneyManager</string>
+    <string-array name="categories">
+        <item>Fast Food</item>
+        <item>Grocery Store</item>
+        <item></item>
+    </string-array>
+    <dimen name="rowSpacingBottom">20dp</dimen>
+    <dimen name="rowSpacingLeft">20dp</dimen>
 </resources>

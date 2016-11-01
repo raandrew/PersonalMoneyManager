@@ -2,46 +2,76 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="25.0.0"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_bbf3e355290091517bec69ea52d940cac0be4e7b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
-        jumboMode="false"
-        revision="25.0.0"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_760e777a36edf45d98c86f521e4b922a53d46b64.jar" />
-    </item>
-    <item
-        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="25.0.0"
-        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_f52f2c45ee346a39e5bad813ba6894202125ab09.jar" />
-    </item>
-    <item
+        is-multidex="true"
         jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
-        jumboMode="false"
+        jumboMode="true"
+        optimize="true"
         revision="25.0.0"
         sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_8a76e2f4a652d5b7ef76605abc7e4e4b7a091441.jar" />
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_8a76e2f4a652d5b7ef76605abc7e4e4b7a091441\classes.dex" />
     </item>
     <item
+        is-multidex="true"
         jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
-        jumboMode="false"
+        jumboMode="true"
+        optimize="true"
         revision="25.0.0"
         sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_f3ff4571a9c31229ca4f3f41945a014dbe6971b6.jar" />
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_f3ff4571a9c31229ca4f3f41945a014dbe6971b6\classes.dex" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_f52f2c45ee346a39e5bad813ba6894202125ab09\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bee109b5ef698565ada62bdd60ad42f7c014b2a6">
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_fdd3fe862d652a3e5bdbfbdbb898e037428fb061\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="D:\Users\Ricky\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
-        jumboMode="false"
+        jumboMode="true"
+        optimize="true"
         revision="25.0.0"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_58b658e5fcfc74b1cf7771c4f72180e86d27948e.jar" />
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_58b658e5fcfc74b1cf7771c4f72180e86d27948e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="71971d346eab1be2cad2bb267b0d191b2a7759b3">
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a73ea220878a90f67169f8d05ae91ecd39cb6cae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_760e777a36edf45d98c86f521e4b922a53d46b64\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_bbf3e355290091517bec69ea52d940cac0be4e7b\classes.dex" />
     </item>
 
 </items>
