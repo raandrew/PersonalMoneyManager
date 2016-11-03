@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="bee109b5ef698565ada62bdd60ad42f7c014b2a6">
+        sha1="bbe71dfe35c574de302ff36ebd78e20aa1170d01">
         <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_fdd3fe862d652a3e5bdbfbdbb898e037428fb061\classes.dex" />
     </item>
     <item
@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="71971d346eab1be2cad2bb267b0d191b2a7759b3">
+        sha1="700e2510cc3cb9024b9d75a461b5ef4270018aa2">
         <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a73ea220878a90f67169f8d05ae91ecd39cb6cae\classes.dex" />
     </item>
     <item
@@ -63,6 +63,15 @@
         revision="25.0.0"
         sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
         <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_760e777a36edf45d98c86f521e4b922a53d46b64\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ricky\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.0\ff93baa2e2e6ca507fc6ec731f61751dd0d865e7\MPAndroidChart-v3.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ff93baa2e2e6ca507fc6ec731f61751dd0d865e7">
+        <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.0_a77e0cc6f4677e8234fc3414063934f191714735\classes.dex" />
     </item>
     <item
         is-multidex="true"

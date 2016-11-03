@@ -1,11 +1,46 @@
 package com.domain.moneymanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
+import java.io.File;
+
+import android.graphics.Color;
+import android.util.Log;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private static String TAG = "MainActivity";
+
+    private float[] yData = {30.3f,25.3f};
+    private String[] xData = {"Michael", "Dallas"};
+    PieChart pieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +64,138 @@ public class MainActivity extends AppCompatActivity {
         spec3.setContent(R.id.tab3);
         spec3.setIndicator("Tips", null);
         tabHost.addTab(spec3);
+        loadLedger();
+
+        Log.d(TAG, "on create: starting to create chart");
+        pieChart = (PieChart) findViewById(R.id.idPieChart);
+        pieChart.setRotationEnabled(true);
+        pieChart.setHoleRadius(25f);
+        pieChart.setTransparentCircleAlpha(0);
+        pieChart.setCenterText("Amount of Money Spent in $");
+        pieChart.setCenterTextSize(10);
+        pieChart.setDrawEntryLabels(true);
+
+        addDataSet();
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                Log.d(TAG, "onValueSelected: Value select from chart");
+                Log.d(TAG, "onValueSelected: " +e.toString());
+                Log.d(TAG, "onValueSelected: " +h.toString());
+                int pos1 = e.toString().indexOf("y: ");
+                Log.d(TAG, "onValueSelected: " +pos1);
+                String sales = e.toString().substring(pos1+2);
+
+                for(int i = 0; i<yData.length; i++){
+                    if(yData[i] == Float.parseFloat(sales)){
+                        pos1 = i;
+                        break;
+                    }
+                }
+                String employee = xData[pos1+1];
+                Toast.makeText(MainActivity.this, "Employee" + employee + "\n"+ "Sales: $" + sales + "K", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
+    }
+
+    public void updateLedger(View view) {
+        Intent i = new Intent(MainActivity.this, InputActivity.class);
+        startActivity(i);
+    }
+
+    public void loadLedger() {
+        try {
+            InputStream in = openFileInput("Ledger.txt");
+
+            if (in != null) {
+
+                InputStreamReader tmp=new InputStreamReader(in);
+                BufferedReader reader=new BufferedReader(tmp);
+                String str;
+                StringBuilder buf=new StringBuilder();
+
+                while ((str = reader.readLine()) != null) {
+                    buf.append(str+"\n");
+                }
+
+                in.close();
+
+                addData(buf);
+
+            } else {
+                Toast.makeText(this, "File is null?", Toast.LENGTH_LONG).show();
+            }
+        }
+        catch (java.io.FileNotFoundException e) {
+            Toast.makeText(this, "File not found.", Toast.LENGTH_LONG).show();
+        }
+        catch (Throwable t) {
+            Toast.makeText(this, "Exception: "+t.toString(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void addData(StringBuilder str) {
+        TableLayout tl = (TableLayout)findViewById(R.id.ledgerTable);
+        TableRow tr = new TableRow(this);
+        tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+
+        TextView test = new TextView(this);
+        test.setText(str);
+        test.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+
+        RelativeLayout l = (RelativeLayout)findViewById(R.id.ledgerLayout);
+        l.addView(test);
+        //tr.addView(test);
+        //tl.addView(tr);
+    }
+
+    public void clearLedger(View view) {
+        try {
+            File file = new File("/data/user/0/com.domain.moneymanager/files/Ledger.txt");
+            file.delete();
+            StringBuilder sb = new StringBuilder();
+            addData(sb);
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.toString());
+        }
+    }
+
+    //====================================================
+
+    private void addDataSet() {
+        Log.d(TAG, "addDataSet started");
+        ArrayList<PieEntry> yEntries = new ArrayList<>();
+        ArrayList<String>xEntries = new ArrayList<>();
+
+        for(int i=0;i<yData.length; i++){
+            yEntries.add(new PieEntry(yData[i] , i));
+        }
+        for(int i=0;i<xData.length; i++){
+            xEntries.add(xData[i]);
+        }
+        PieDataSet pieDataSet = new PieDataSet(yEntries, "Amount Spent");
+        pieDataSet.setSliceSpace(2);
+        pieDataSet.setValueTextSize(12);
+
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.RED);
+        colors.add(Color.BLUE);
+
+        pieDataSet.setColors(colors);
+
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
+        pieChart.invalidate();
+
     }
 }

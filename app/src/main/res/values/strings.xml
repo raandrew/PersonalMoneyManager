@@ -1,10 +1,16 @@
 <resources>
-    <string name="app_name">MoneyManager</string>
+    <string name="app_name">Personal Money Manager</string>
     <string-array name="categories">
         <item>Fast Food</item>
         <item>Grocery Store</item>
         <item></item>
     </string-array>
+    <string-array name="graphTime">
+        <item>This Week</item>
+        <item>This Month</item>
+        <item>This year</item>
+    </string-array>
     <dimen name="rowSpacingBottom">20dp</dimen>
     <dimen name="rowSpacingLeft">20dp</dimen>
+    <string name="link"><a href="http://www.google.com">Learn more here!</a></string>
 </resources>
