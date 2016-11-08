@@ -150,13 +150,16 @@ public class MainActivity extends AppCompatActivity {
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
             row.setLayoutParams(lp);
 
-            //TextView qty = new TextView(this);
-            //qty.setText(str);
+            String columns[] = lines[i].split("\t");
 
-            String column[] = lines[i].split("|");
-            for (int j = 0; j<column.length; j++) {
+//            for (int z=0; z<columns.length; z++) {
+//                System.out.println("z[" + z + "]= " + columns[z]);
+//            }
+
+            for (int j = 0; j<columns.length; j++) {
                 TextView txtView = new TextView(this);
-                txtView.setText(column[j]);
+                txtView.setPadding(20, 20, 20, 20);
+                txtView.setText(columns[j]);
 
                 row.addView(txtView);
             }
