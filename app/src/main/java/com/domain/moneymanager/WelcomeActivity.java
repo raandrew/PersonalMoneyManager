@@ -5,44 +5,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import android.widget.EditText;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
-//import org.xml.sax.*;
-//import org.w3c.dom.*;
-
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-/*
-    XML example:
+import java.util.ArrayList;
 
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <!DOCTYPE ..
-    <profile>
-        <name>Name-here</name>
-    </profile>
- */
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+import org.xmlpull.v1.XmlPullParserException;
+
 public class WelcomeActivity extends AppCompatActivity {
+
+    String username = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (isSaved() == true) {
+        super.onCreate(savedInstanceState);
+        Boolean saved = isSaved();
+        if (saved == true) {
             Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
             startActivity(intent);
-            Toast.makeText(this, "Save content found!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Save content found! Content:" + username, Toast.LENGTH_LONG).show();
         } else {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.welcome_activity);
-            Toast.makeText(this, "No saved content found!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Response: " + isSaved(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -53,75 +46,68 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public boolean isSaved() {
-        String xml = "Profile.ini";
-        Document dom;
-        String name = "";
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
         try {
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            dom = db.parse(xml);
+            XmlPullParserFactory Xml = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = Xml.newPullParser();
+            FileInputStream fIn = openFileInput("Profile.ini");
+            InputStreamReader isr = new InputStreamReader(fIn);
 
-            Element doc = dom.getDocumentElement();
-
-            name = getTextValue(name, doc, "name");
-            return true;
-        } catch (ParserConfigurationException pce) {
-            return false;
-        } catch (SAXException se) {
-            return false;
-        } catch (IOException ioe) {
-            return false;
+            // auto-detect the encoding from the stream
+            parser.setInput(isr);
+            int eventType = parser.getEventType();
+            boolean done = false;
+            while (eventType != XmlPullParser.END_DOCUMENT && !done){
+                String name = null;
+                switch (eventType){
+                    case XmlPullParser.START_DOCUMENT:
+                        break;
+                    case XmlPullParser.START_TAG:
+                        name = parser.getName();
+                        if (name.equalsIgnoreCase("name")){
+                            username = name;
+                            return true;
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                        name = parser.getName();
+                        /*
+                        if (name.equalsIgnoreCase("category") &&
+                                currentCategory != null){
+                            categories.add(0, currentCategory);
+                        } else if (name.equalsIgnoreCase("packingList")){
+                            done = true;
+                        }
+                        */
+                        break;
+                }
+                eventType = parser.next();
+            }
+        } catch (FileNotFoundException e) {
+            // TODO
+        } catch (IOException e) {
+            // TODO
+        } catch (Exception e){
+            // TODO
         }
-    }
-
-    public String getTextValue(String def, Element doc, String tag) {
-        String value = def;
-        NodeList nl = doc.getElementsByTagName(tag);
-        if (nl.getLength() > 0 && nl.item(0).hasChildNodes()) {
-            value = nl.item(0).getFirstChild().getNodeValue();
-        }
-        return value;
+        return false;
     }
 
     public void saveUser() {
-        String xml = "Profile.ini";
-        Document dom;
-        Element e = null;
-        EditText txt = (EditText) findViewById(R.id.editText);
-        String name = txt.getText().toString();
-
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            dom = db.newDocument();
+            FileOutputStream fOut = openFileOutput("Profile.ini", MODE_WORLD_READABLE);
+            OutputStreamWriter osw = new OutputStreamWriter(fOut);
 
-            Element rootEle = dom.createElement("Profile");
+            EditText txt = (EditText) findViewById(R.id.editText);
+            String name = "<name>" + txt.getText().toString() + "</name>";
+            Toast.makeText(this, "Name: " + name, Toast.LENGTH_LONG).show();
+            osw.write(name);
+            osw.flush();
+            osw.close();
 
-            e = dom.createElement("name");
-            e.appendChild(dom.createTextNode(name));
-            rootEle.appendChild(e);
-
-            // Can add more to profile here..
-
-            dom.appendChild(rootEle);
-
-            try {
-                Transformer tr = TransformerFactory.newInstance().newTransformer();
-                tr.setOutputProperty(OutputKeys.INDENT, "yes");
-                tr.setOutputProperty(OutputKeys.METHOD, "xml");
-                tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-                tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
-                tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-                tr.transform(new  DOMSource(dom), new StreamResult(new FileOutputStream(xml)));
-            } catch (TransformerException te) {
-
-            } catch (IOException ioe) {
-
-            }
-        } catch (ParserConfigurationException pce) {
-
+        } catch (FileNotFoundException e) {
+            Toast.makeText(this, "Error: FileNotFoundException", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            Toast.makeText(this, "Error: IOException", Toast.LENGTH_LONG).show();
         }
     }
 }

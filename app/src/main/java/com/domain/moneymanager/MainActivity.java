@@ -141,18 +141,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addData(StringBuilder str) {
-        TableLayout tl = (TableLayout)findViewById(R.id.ledgerTable);
-        TableRow tr = new TableRow(this);
-        tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+        TableLayout ll = (TableLayout) findViewById(R.id.ledgerTable);
+        String lines[] = str.toString().split("\\n");
 
-        TextView test = new TextView(this);
-        test.setText(str);
-        test.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+        for (int i = 0; i <lines.length; i++)
+        {
+            TableRow row= new TableRow(this);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+            row.setLayoutParams(lp);
 
-        RelativeLayout l = (RelativeLayout)findViewById(R.id.ledgerLayout);
-        l.addView(test);
-        //tr.addView(test);
-        //tl.addView(tr);
+            //TextView qty = new TextView(this);
+            //qty.setText(str);
+
+            String column[] = lines[i].split("|");
+            for (int j = 0; j<column.length; j++) {
+                TextView txtView = new TextView(this);
+                txtView.setText(column[j]);
+
+                row.addView(txtView);
+            }
+
+            ll.addView(row,i);
+        }
     }
 
     public void clearLedger(View view) {
