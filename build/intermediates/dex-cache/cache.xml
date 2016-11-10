@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="c7335af78d32cbc80e05e372ea321e4af278b6b8">
+        sha1="091f0d1bfe2f924416c54293ae380b41178d95bc">
         <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_fdd3fe862d652a3e5bdbfbdbb898e037428fb061\classes.dex" />
     </item>
     <item
@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="a30acb9d3ff388a96fbdbd050f31362455c4b9bb">
+        sha1="abd9ac02062bc18c83d81ec3446954e3b6322691">
         <dex dex="C:\Users\Ricky\Desktop\PersonalMoneyManager\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a73ea220878a90f67169f8d05ae91ecd39cb6cae\classes.dex" />
     </item>
     <item
