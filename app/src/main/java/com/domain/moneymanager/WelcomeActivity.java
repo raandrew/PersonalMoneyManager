@@ -33,7 +33,6 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivity(intent);
             //Toast.makeText(this, "Save content found! Content:" + username, Toast.LENGTH_LONG).show();
         } else {
-            super.onCreate(savedInstanceState);
             setContentView(R.layout.welcome_activity);
             //Toast.makeText(this, "Response: " + isSaved(), Toast.LENGTH_LONG).show();
         }
