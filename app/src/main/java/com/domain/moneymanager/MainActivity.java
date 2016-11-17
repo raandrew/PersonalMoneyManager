@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
     public void addData(StringBuilder str) {
         TableLayout ll = (TableLayout) findViewById(R.id.ledgerTable);
         String lines[] = str.toString().split("\\n");
+        Double total = 0.0;
 
         for (int i = 0; i <lines.length; i++)
         {
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 //            for (int z=0; z<columns.length; z++) {
 //                System.out.println("z[" + z + "]= " + columns[z]);
 //            }
-
+            total += Double.parseDouble(columns[1]);
             for (int j = 0; j<columns.length; j++) {
                 TextView txtView = new TextView(this);
                 txtView.setPadding(20, 20, 20, 20);
