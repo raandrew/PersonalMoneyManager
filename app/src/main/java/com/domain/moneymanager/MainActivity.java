@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import java.io.InputStream;
@@ -33,6 +34,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
+//#DC143C
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private float[] yData = {30.3f,25.3f};
     private String[] xData = {"Michael", "Dallas"};
     PieChart pieChart;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
         spec3.setIndicator("Tips", null);
         tabHost.addTab(spec3);
         loadLedger();
+
+        Button clearBtn = (Button) findViewById(R.id.button2);
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearLedger();
+            }
+        });
 
         Log.d(TAG, "on create: starting to create chart");
         pieChart = (PieChart) findViewById(R.id.idPieChart);
@@ -143,7 +155,9 @@ public class MainActivity extends AppCompatActivity {
     public void addData(StringBuilder str) {
         TableLayout ll = (TableLayout) findViewById(R.id.ledgerTable);
         String lines[] = str.toString().split("\\n");
-        Double total = 0.0;
+
+        double total = 0;
+        TextView txtTotal = (TextView) findViewById(R.id.txtTotal);
 
         for (int i = 0; i <lines.length; i++)
         {
@@ -152,6 +166,10 @@ public class MainActivity extends AppCompatActivity {
             row.setLayoutParams(lp);
 
             String columns[] = lines[i].split("\t");
+            System.out.println(columns[1]);
+            total += Double.parseDouble(columns[1]);
+            txtTotal.setText(Double.toString(total));
+
 
 //            for (int z=0; z<columns.length; z++) {
 //                System.out.println("z[" + z + "]= " + columns[z]);
@@ -167,14 +185,18 @@ public class MainActivity extends AppCompatActivity {
 
             ll.addView(row,i);
         }
+
+//      Add up the prices to get the total. Can't figure out how to access the "price" portion of the Ledger Table.
     }
 
-    public void clearLedger(View view) {
+    public void clearLedger() {
+        TableLayout ledgerTable = (TableLayout) findViewById(R.id.ledgerTable);
         try {
             File file = new File("/data/user/0/com.domain.moneymanager/files/Ledger.txt");
             file.delete();
             StringBuilder sb = new StringBuilder();
             addData(sb);
+            ledgerTable.removeAllViews();
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.toString());
         }

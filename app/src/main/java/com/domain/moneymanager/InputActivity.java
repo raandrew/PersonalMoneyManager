@@ -34,7 +34,7 @@ public class InputActivity extends AppCompatActivity {
         String a = aEditText.getText().toString();
         Spinner cEditText = (Spinner) findViewById(R.id.spinner);
         String c = cEditText.getSelectedItem().toString();
-        str = p + "\t" + a + "\t" + c + "\n";
+        str = "  " + p + "\t" + a + "\t" + c + "\n";
         try {
             OutputStreamWriter out = new OutputStreamWriter(openFileOutput("Ledger.txt", MODE_APPEND));
             out.write(str);
