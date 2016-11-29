@@ -19,6 +19,136 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/tab2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/ledgerLayout"
+                android:layout_marginBottom="25dp">
+
+                <Button
+                    android:text="Clear Ledger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button2"
+                    android:onClick="clearLedger"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="false"
+                    android:layout_centerInParent="false"
+                    android:layout_centerHorizontal="false"
+                    android:layout_marginLeft="30dp" />
+
+                <Button
+                    android:text="Update Ledger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button4"
+                    android:onClick="updateLedger"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30dp" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:layout_below="@+id/textView10"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_above="@+id/button2"
+                    android:layout_marginBottom="35dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stretchColumns="*"
+                        android:id="@+id/ledgerTable">
+
+                    </TableLayout>
+                </ScrollView>
+
+                <TextView
+                    android:text="Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView9"
+                    android:layout_alignBottom="@+id/textView10"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="26sp"
+                    android:layout_alignTop="@+id/textView10"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:text="Category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView6"
+                    android:layout_alignBaseline="@+id/textView9"
+                    android:layout_alignBottom="@+id/textView9"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="26sp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:text="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/textView11"
+                    android:layout_toRightOf="@+id/textView11"
+                    android:layout_toEndOf="@+id/textView11"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginStart="19dp"
+                    android:id="@+id/txtTotal"
+                    android:textColor="@android:color/darker_gray" />
+
+                <TextView
+                    android:text="Total Amount:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/textView11"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_above="@+id/button2"
+                    android:layout_alignLeft="@+id/textView9"
+                    android:layout_alignStart="@+id/textView9" />
+
+                <TextView
+                    android:text="$"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView12"
+                    android:layout_alignBaseline="@+id/txtTotal"
+                    android:layout_alignBottom="@+id/txtTotal"
+                    android:layout_toRightOf="@+id/textView11"
+                    android:layout_toEndOf="@+id/textView11"
+                    android:layout_marginLeft="4dp" />
+
+                <TextView
+                    android:text="Amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="92dp"
+                    android:id="@+id/textView10"
+                    android:textSize="26sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/button4"
+                    android:layout_toStartOf="@+id/button4" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="bottom|center"
@@ -99,135 +229,6 @@
 
             </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/tab2">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:id="@+id/ledgerLayout"
-                android:layout_marginBottom="25dp">
-
-                <Button
-                    android:text="Clear Ledger"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button2"
-                    android:onClick="clearLedger"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerVertical="false"
-                    android:layout_centerInParent="false"
-                    android:layout_centerHorizontal="false"
-                    android:layout_marginLeft="30dp" />
-
-                <Button
-                    android:text="Update Ledger"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button4"
-                    android:onClick="updateLedger"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp" />
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="34dp"
-                    android:layout_below="@+id/textView10"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_above="@+id/button2"
-                    android:layout_marginBottom="35dp">
-
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:stretchColumns="*"
-                        android:id="@+id/ledgerTable">
-
-                    </TableLayout>
-                </ScrollView>
-
-                <TextView
-                    android:text="Place"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView9"
-                    android:layout_alignBottom="@+id/textView10"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:textSize="26sp"
-                    android:layout_alignTop="@+id/textView10"
-                    android:layout_marginLeft="25dp"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <TextView
-                    android:text="Category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView6"
-                    android:layout_alignBaseline="@+id/textView9"
-                    android:layout_alignBottom="@+id/textView9"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:textSize="26sp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <TextView
-                    android:text="Amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="91dp"
-                    android:id="@+id/textView10"
-                    android:textSize="26sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:text="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/textView11"
-                    android:layout_toRightOf="@+id/textView11"
-                    android:layout_toEndOf="@+id/textView11"
-                    android:layout_marginLeft="19dp"
-                    android:layout_marginStart="19dp"
-                    android:id="@+id/txtTotal"
-                    android:textColor="@android:color/darker_gray" />
-
-                <TextView
-                    android:text="Total Amount:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/textView11"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_above="@+id/button2"
-                    android:layout_alignLeft="@+id/textView9"
-                    android:layout_alignStart="@+id/textView9" />
-
-                <TextView
-                    android:text="$"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView12"
-                    android:layout_alignBaseline="@+id/txtTotal"
-                    android:layout_alignBottom="@+id/txtTotal"
-                    android:layout_toRightOf="@+id/textView11"
-                    android:layout_toEndOf="@+id/textView11"
-                    android:layout_marginLeft="4dp" />
-
-            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout

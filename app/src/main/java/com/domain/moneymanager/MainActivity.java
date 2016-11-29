@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clearLedger();
+                Toast.makeText(getApplicationContext(), "Ledger Cleared", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -168,13 +169,14 @@ public class MainActivity extends AppCompatActivity {
             String columns[] = lines[i].split("\t");
             System.out.println(columns[1]);
             total += Double.parseDouble(columns[1]);
-            txtTotal.setText(Double.toString(total));
+            double money = Math.round(total * 100) / 100.0;
+            txtTotal.setText(Double.toString(money));
 
 
 //            for (int z=0; z<columns.length; z++) {
 //                System.out.println("z[" + z + "]= " + columns[z]);
 //            }
-            total += Double.parseDouble(columns[1]);
+
             for (int j = 0; j<columns.length; j++) {
                 TextView txtView = new TextView(this);
                 txtView.setPadding(20, 20, 20, 20);
@@ -197,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
             StringBuilder sb = new StringBuilder();
             addData(sb);
             ledgerTable.removeAllViews();
+
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.toString());
         }

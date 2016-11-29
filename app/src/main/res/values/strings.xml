@@ -3,7 +3,9 @@
     <string-array name="categories">
         <item>Fast Food</item>
         <item>Grocery Store</item>
-        <item></item>
+        <item>Clothing</item>
+        <item>Bill Payment</item>
+        <item>Other</item>
     </string-array>
     <string-array name="graphTime">
         <item>This Week</item>
